@@ -1,15 +1,30 @@
-let fs = require("fs");
+const fs = require("fs/promises");
 
-const writeAndRead = (path, obj) => {
-  fs.writeFile(path, JSON.stringify(obj), (error) => {
-    if (error) throw error;
-    fs.readFile(path, (error, datos) => {
-      if (error) throw error;
-      console.log(JSON.parse(datos));
+function writeAndReadThenCatch(path, obj) {
+  fs.writeFile(path, JSON.stringify(obj))
+    .then(() => {
+      return fs.readFile(path, "utf8");
+    })
+    .then((data) => {
+      console.log(JSON.parse(data));
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  });
-};
+}
 
-// writeAndRead("./miFichero.json", {calle: "Teruel", numero: 8});
+// writeAndReadThenCatch("calle.json",{calle: "Teruel",número: 8})
 
-module.exports = { writeAndRead };
+async function writeAndReadAsyncAwait(path, obj) {
+  try {
+    await fs.writeFile(path, JSON.stringify(obj));
+    let data = await fs.readFile(path, "utf-8");
+    console.log(JSON.parse(data));
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// writeAndReadAsyncAwait("objeto.json", {calle: "Teruel",número: 8})
+
+module.exports = { writeAndReadThenCatch, writeAndReadAsyncAwait };

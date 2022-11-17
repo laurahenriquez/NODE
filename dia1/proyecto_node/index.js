@@ -1,6 +1,8 @@
-const { readConsole } = require("./readConsole.js");
-const { writeAndRead } = require("./writeAndReadObject.js");
+const { readConsoleThenCatch } = require("./readConsole.js");
+// const { readConsoleAsyncAwait } = require("./readConsole.js");
+const { writeAndReadThenCatch } = require("./writeAndReadObject.js");
+// const { writeAndReadAsyncAwait } = require("./writeAndReadObject.js");
 
-readConsole((persona) => {
-  writeAndRead("./persona.json", persona);
+readConsoleThenCatch(function (obj) {
+  writeAndReadThenCatch("objeto.json", obj);
 });
