@@ -34,23 +34,6 @@ function readConsoleThenCatch(callback) {
     });
 }
 
-// readConsoleThenCatch(console.log)
 
-async function readConsoleAsyncAwait(callback) {
-  try {
-    let obj = {};
-    let pregunta1 = await pregunta("Name?");
-    obj.name = pregunta1;
-    let pregunta2 = await pregunta("Surname?");
-    obj.surname = pregunta2;
-    let pregunta3 = await pregunta("Age?");
-    obj.age = pregunta3;
-    await callback(obj);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-//readConsoleAsyncAwait(console.log)
 
 module.exports = { readConsoleThenCatch, readConsoleAsyncAwait };

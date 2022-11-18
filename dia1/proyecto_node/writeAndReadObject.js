@@ -13,7 +13,7 @@ function writeAndReadThenCatch(path, obj) {
     });
 }
 
-// writeAndReadThenCatch("calle.json",{calle: "Teruel",número: 8})
+
 
 async function writeAndReadAsyncAwait(path, obj) {
   try {
@@ -25,6 +25,5 @@ async function writeAndReadAsyncAwait(path, obj) {
   }
 }
 
-// writeAndReadAsyncAwait("objeto.json", {calle: "Teruel",número: 8})
 
 module.exports = { writeAndReadThenCatch, writeAndReadAsyncAwait };
